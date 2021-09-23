@@ -1,1 +1,3 @@
-# RaspberryPI-Cluster---Gluster-Docker-Swarm
+# RaspberryPi Cluster
+
+##Setup Raspberry Pi
