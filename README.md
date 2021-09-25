@@ -1,4 +1,4 @@
-# RaspberryPi Cluster
+#RPi4 Docker Cluster
 Background for the project is to document all of the details of the setup. I want a container solution for PiHole, Homebridge and other nifty stuff for home usage. The setup contains of three Raspberry Pi 4 with 4 GB RAM. I must emphasize that this is not a how-to/DIY thing, but if you find some of this useful - Awesome!
 
 ## Setup Raspberry Pi (This part is for all of the PIes
@@ -33,3 +33,28 @@ Find the [pi4] section and add the following line:
 arm_64bit=1
 ```
 ... Then reboot (you know the drill).
+
+## Setup Docker (Swarm)
+1. Run following command on each pi
+```bash
+curl -sSL https://get.docker.com | sh; done
+```
+2. Init docker swarm on the manager of the swarm, and add worker to the swarm. For me 192.168.86.191 is manager.
+Run following on the manager
+```bash
+sudo docker swarm init --advertise-addr 192.168.86.191
+```
+Run following on the worker(s)
+```bash
+docker swarm join \
+        --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \
+       192.168.86.191:2377
+```
+Verify that all of the nodes is added to the swarm
+```bash
+sudo docker node ls
+```
+To add more tokens use following command
+```bash
+sudo docker swarm join-token manager
+```
