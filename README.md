@@ -44,6 +44,17 @@ System Options > Hostname > Remove the oldname (raspberrypi) and add the new.
 ```
 ... Then reboot (you know the drill).
 
+## Setup Gluster
+This part was painfully easy with the right guide. Strongly recommend checking out this link: https://github-wiki-see.page/m/nerdily/Raspberry-Pi-Docker-Swarm/wiki/2.-GlusterFS (I only use the internal storage, but the guide shows how to use external)
+
+
+1. Install Gluster on each of the devices and activate service.
+```bash
+sudo apt install glusterfs-server
+sudo systemctl enable glusterd
+```
+2. Install Gluster on each of the devices and activate service.
+
 ## Setup Docker (Swarm)
 1. Run following command on each pi
 ```bash
