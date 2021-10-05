@@ -1,12 +1,11 @@
 #RPi4 Docker Cluster
 Background for the project is to document all of the details of the setup. I want a container solution for PiHole, Homebridge and other nifty stuff for home usage. The setup contains of three Raspberry Pi 4 with 4 GB RAM. I must emphasize that this is not a how-to/DIY thing, but if you find some of this useful - Awesome!
 
-## Setup Raspberry Pi (This part is for all of the PIes
+## Setup Raspberry Pi (This part is for all of the Pi)
 1. I decided i just stick with Raspberry Pi OS Lite. https://www.raspberrypi.org/software/operating-systems/
 2. ++++ Burn it over to a SD card and all of that ++++
 3. Add a ssh-file to the root of the filesystem.
 4. Setup static IP. Run following in bash
-5. Update the pi!
 ```bash
 sudo nano /etc/dhcpcd.conf
 ```
@@ -21,7 +20,12 @@ static domain_name_servers=8.8.8.8 8.8.4.4 fd51:42f8:caae:d92e::1
 ```bash
 sudo reboot
 ```
-6. Add following to enable memory cgroups
+5. Update the pi! sudo apt update && sudo apt upgrade
+```bash
+sudo apt update
+sudo apt upgrade
+```
+7. Add following to enable memory cgroups
 ```bash
 sudo sed -i '$ s/$/ cgroup_enable=memory cgroup_memory=1/' /boot/cmdline.txt
 ```
