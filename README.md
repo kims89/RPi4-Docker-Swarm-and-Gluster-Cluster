@@ -6,6 +6,7 @@ Background for the project is to document all of the details of the setup. I wan
 2. ++++ Burn it over to a SD card and all of that ++++
 3. Add a ssh-file to the root of the filesystem.
 4. Setup static IP. Run following in bash
+5. Update the pi!
 ```bash
 sudo nano /etc/dhcpcd.conf
 ```
@@ -20,11 +21,11 @@ static domain_name_servers=8.8.8.8 8.8.4.4 fd51:42f8:caae:d92e::1
 ```bash
 sudo reboot
 ```
-5. Add following to enable memory cgroups
+6. Add following to enable memory cgroups
 ```bash
 sudo sed -i '$ s/$/ cgroup_enable=memory cgroup_memory=1/' /boot/cmdline.txt
 ```
-6. .. And since this is is rpi4, you should always activate (in mye opinion)
+7. .. And since this is is rpi4, you should always activate (in mye opinion)
 ```bash
 sudo nano /boot/config.txt
 ```
