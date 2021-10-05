@@ -53,8 +53,23 @@ This part was painfully easy with the right guide. Strongly recommend checking o
 sudo apt install glusterfs-server
 sudo systemctl enable glusterd
 ```
-2. Install Gluster on each of the devices and activate service.
-
+2. Make the folder that you want to replicate on each node.
+```bash
+##NODE RAS-1
+sudo mkdir -p /mnt/glusterfs
+sudo mkdir -p /data/glusterfs/myvol1/brick1/
+```
+3. From the master-node, add accordingly all of the nodes that is in your cluster
+```bash
+gluster volume create brick1 replica 2 ras-1:/brick1 ras-2:/brick1 force
+gluster volume set brick1 cluster.server-quorum-type server
+gluster volume set all cluster.server-quorum-ratio 51%
+gluster volume start brick1
+```
+4. Mount the drive on each node
+```bash
+sudo echo "ras-1:/brick1 /mnt/glusterfs glusterfs defaults,_netdev,noauto,x-systemd.automount 0 0" >> /etc/fstab
+```
 ## Setup Docker (Swarm)
 1. Run following command on each pi
 ```bash
