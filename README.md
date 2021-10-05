@@ -42,7 +42,7 @@ arm_64bit=1
 ## Setup Docker (Swarm)
 1. Run following command on each pi
 ```bash
-curl -sSL https://get.docker.com | sh; done
+curl -sSL https://get.docker.com | sh;
 ```
 2. Init docker swarm on the manager of the swarm, and add worker to the swarm. For me 192.168.86.191 is manager.
 Run following on the manager
