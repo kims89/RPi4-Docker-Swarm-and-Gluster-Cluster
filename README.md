@@ -29,13 +29,18 @@ sudo apt upgrade
 ```bash
 sudo sed -i '$ s/$/ cgroup_enable=memory cgroup_memory=1/' /boot/cmdline.txt
 ```
-7. .. And since this is is rpi4, you should always activate (in mye opinion)
+8. .. And since this is is rpi4, you should always activate (in mye opinion)
 ```bash
 sudo nano /boot/config.txt
 ```
 Find the [pi4] section and add the following line:
 ```bash
 arm_64bit=1
+```
+9. .. Rename Pi to something else. Like docker-1 or something.
+```bash
+sudo raspi-config
+System Options > Hostname > Remove the oldname (raspberrypi) and add the new.
 ```
 ... Then reboot (you know the drill).
 
